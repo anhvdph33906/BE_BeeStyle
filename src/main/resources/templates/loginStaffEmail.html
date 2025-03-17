@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #e91e63;
+        }
+        .content {
+            text-align: justify;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Beestyle</h1>
+        <p><i>Thời trang cho mọi phong cách</i></p>
+    </div>
+    <div class="content">
+        <p>Chào <b th:text="${employeeName}">[Tên Nhân Viên]</b>,</p>
+        <p>Chào mừng bạn đến với đội ngũ Beestyle! Đây là thông tin tài khoản của bạn để truy cập vào hệ thống:</p>
+        <ul>
+            <li><b>Email đăng nhập:</b> <span th:text="${email}">[Email đăng nhập]</span></li>
+            <li><b>Mật khẩu:</b> <span th:text="${password}">[Mật khẩu]</span></li>
+        </ul>
+        <p>Vui lòng truy cập vào hệ thống qua liên kết dưới đây để đăng nhập và bắt đầu công việc của bạn:</p>
+        <p><a th:href="${loginUrl}" style="color: #e91e63;">Đăng nhập hệ thống</a></p>
+        <p>Nếu bạn có bất kỳ câu hỏi nào hoặc cần hỗ trợ, vui lòng liên hệ với bộ phận quản trị.</p>
+        <p>Chúc bạn có một ngày làm việc hiệu quả!</p>
+        <p>Trân trọng,</p>
+        <p><b>Đội ngũ Beestyle</b></p>
+    </div>
+    <div class="footer">
+        <p>Email: support@beestyle.vn | Hotline: 0900 123 456</p>
+        <p>&copy; 2025 Beestyle. Tất cả các quyền được bảo lưu.</p>
+    </div>
+</div>
+</body>
+</html>

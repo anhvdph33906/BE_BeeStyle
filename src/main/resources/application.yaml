@@ -1,0 +1,106 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: BE-beestyle-spring-boot
+
+  # CONNECTION POOL
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: HikariConnPool
+
+    url: jdbc:mysql://localhost:3306/ecommerce-beestyle?useSSL=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mail:
+    from: locnhph38787@fpt.edu.vn
+    host: smtp.gmail.com
+    port: 587
+    username: locnhph38787@fpt.edu.vn
+    password: vgmzbizgspwoawlt
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        jdbc:
+          batch_size: 30
+          batch_versioned_data: true
+        order_updates: true
+        order_inserts: true
+  #        generate_statistics: true
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    doc-expansion: none
+openapi:
+  service:
+    title: API Document
+    version: v1.0.0
+    description: Description API service
+    serverUrl: http://localhost:${server.port}/api/v1
+    serverName: server dev
+    api-docs: api-services
+
+# VNPay Configuration
+vnpay:
+  # Mã Tài Khoản Merchant
+  tmn_code: NB1VPMR9
+
+  # Chuỗi bí mật dùng để mã hóa
+  hash_secret: 5ZIKVVHVSYA3KYT1BU443AWDOJ1MSSSH
+  pay_url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+
+  # URL trả kết quả sau khi thanh toán
+  return_url: http://localhost:8080/api/v1/payment/return
+
+ghtk:
+  api:
+    # Thay bằng Token của bạn
+    token: NBg6AVevmUIv22r3ONMLyzghX5jBn3Sz0ZeJ4D
+    url: https://services.giaohangtietkiem.vn/services/shipment/fee
+
+jwt:
+  expiryHour: 24
+  expiryDay: 14
+  accessKey: C4E578E7FB3FF5A4FC71B3BCB4389C8C457528A91FA4B74AAD0B348A93C68067
+  refreshKey: 835EDFFA4D866E90725E477CFBD5C0F8C0EDE5D1F9F4092FC4E75C946FAFB19B
+  resetKey: B7845265B70B4546D372E6B01B50BAF1D49BAC5B2B4043384701B4BFBB19DD40
+
+#logging
+logging:
+  level:
+    org:
+      springframework:
+        security=DEBUG:
